@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://eriktailor.github.io/startjekyll/sitemap.xml
