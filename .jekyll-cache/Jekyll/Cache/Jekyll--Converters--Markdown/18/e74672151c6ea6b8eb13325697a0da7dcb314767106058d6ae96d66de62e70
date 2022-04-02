@@ -1,0 +1,72 @@
+I"°<h2 id="reset-to-defaults">Reset to defaults</h2>
+
+<ol>
+  <li>Hit <code class="language-plaintext highlighter-rouge">Cmd</code> + <code class="language-plaintext highlighter-rouge">Shift</code> + <code class="language-plaintext highlighter-rouge">P</code></li>
+  <li>Search for <strong>open settings json</strong> and select Preferences: Open Settings (JSON)</li>
+  <li>Delete everything inside the document, but leave an empty <code class="language-plaintext highlighter-rouge">{ }</code> and save the file</li>
+  <li>Relaunch VSCode</li>
+  <li>Delete the contents of /Users/eriktailor/.vscode/extensions folder</li>
+</ol>
+
+<hr />
+
+<h2 id="extensions">Extensions</h2>
+
+<ul>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=janisdd.vscode-edit-csv">Edit Csv</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-icons-mac">vscode-icons-mac</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=SimonSiefke.svg-preview">SVG Preview</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=vincaslt.highlight-matching-tag">Highlight matching tag</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client">PHP Intelephense</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced">Markdown Preview Enhanced</a></li>
+</ul>
+
+<hr />
+
+<h2 id="auto-format-on-save">Auto format on save</h2>
+
+<ol>
+  <li>Reset all to default settings</li>
+  <li>Delete all extensions <em>(need a clear vscode)</em></li>
+  <li>Enable Settings &gt; Formatting &gt; Format on save</li>
+  <li>In a html file, double click and select Format document</li>
+  <li>Select <strong>Prettier</strong> as a default html formatter</li>
+</ol>
+
+<hr />
+
+<h2 id="settings">Settings</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Cmd</code> + <code class="language-plaintext highlighter-rouge">Shift</code> + <code class="language-plaintext highlighter-rouge">P</code> and search for <strong>settings.json</strong> and add these lines:</p>
+
+<pre><code class="language-other">{
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "Monaco, 'Courier New', monospace",
+    "editor.lineHeight": 26,
+    "breadcrumbs.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": false,
+    "workbench.statusBar.visible": false,
+    "workbench.iconTheme": "vscode-icons-mac",
+    "workbench.colorCustomizations": {
+        "minimap.errorHighlight": "#1E1E1E",
+		 "gitDecoration.ignoredResourceForeground": "#fff"
+    },
+    "git.decorations.enabled": false,
+    "window.nativeTabs": true,
+    "problems.decorations.enabled": false,
+    "editor.minimap.size": "fill",
+    "editor.minimap.maxColumn": 100,
+    "editor.minimap.scale": 2,
+    "editorOverviewRuler.background": "#fff",
+    "editor.minimap.enabled": false,
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontFamily": "monospace",
+    "files.exclude": {
+        "**/.git": false
+    }
+}
+</code></pre>
+:ET

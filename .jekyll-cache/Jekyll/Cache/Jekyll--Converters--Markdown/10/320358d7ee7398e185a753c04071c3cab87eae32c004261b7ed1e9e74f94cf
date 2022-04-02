@@ -1,0 +1,22 @@
+I"ö<h2 id="create">Create</h2>
+
+<p>In the <code class="language-plaintext highlighter-rouge">/_includes</code> folder, create a file named <code class="language-plaintext highlighter-rouge">button.html</code> with this content:</p>
+
+<pre><code class="language-other">&lt;a href="{{ include.url }}" class="btn btn-primary"&gt;{{ include.label }}&lt;/a&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="usuage">Usuage</h2>
+
+<p>Use it around the projekt like this:</p>
+
+<pre><code class="language-other">{% include button.html label="Button Text" url="https://444.hu" %}
+</code></pre>
+
+<hr />
+
+<h3 id="source">Source</h3>
+
+<p><a href="https://www.sitepoint.com/quick-tip-how-to-build-customizable-html-widgets-in-jekyll/">How to build customizable HTML widgets in Jekyll</a></p>
+:ET
