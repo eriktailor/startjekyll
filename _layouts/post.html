@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<img class="mb-3" src="{{base}}/assets/img/posts/{{ page.image }}" alt="{{ page.title }}" />
+
+<p>{{ page.description }}</p>
+
+<hr />
+
+{{ content }}
+
+<hr />
+
+<h3>Tags</h3>
+
+<ul class="tags-list">
+	{% for tag in page.tags %}
+	<li><a href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}.html">{{ tag }}</a></li>
+	{% endfor %}
+</ul>

@@ -1,0 +1,17 @@
+// Blog pages style
+.page-blog {
+	article {
+		padding: 30px 0;
+		border-bottom: 1px solid #9a9a9a;
+	}
+}
+
+img {
+	display: block;
+	width: 100%;
+	margin-bottom: $bottom-margin;
+	border-radius: 8px;
+	&.cover-image {
+		margin-bottom: 30px;
+	}
+}

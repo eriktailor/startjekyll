@@ -1,0 +1,13 @@
+// Form inputs
+input, select, textarea {
+    background-color: #fff;
+    padding: 20px;
+    display: block;
+    border: 0;
+    width: 100%;
+    @media (min-width: $breakpoint-sm) {
+        width: 60%;
+    }
+    outline: none;
+    margin-bottom: $bottom-margin;
+}

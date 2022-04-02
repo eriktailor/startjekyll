@@ -1,0 +1,19 @@
+// Home hero
+.home-hero {
+	display: flex;
+	img {
+		width: 206px;
+		height: 224px;
+		object-fit: cover;
+		border-radius: 8px;
+		@media (min-width: $breakpoint-sm) {
+			margin-right: 20px;
+		}
+		@media (max-width: $breakpoint-sm) {
+			width: 100%;
+		}
+	}
+	@media (max-width: $breakpoint-sm) {
+		flex-wrap: wrap;
+	}
+}

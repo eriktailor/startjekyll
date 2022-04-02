@@ -1,0 +1,13 @@
+.btn {
+	background-color: $primary;
+	padding: 10px 20px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-block;
+	border-radius: 3px;
+	margin-bottom: $bottom-margin;
+	&:hover {
+		background: lighten($primary, 5%);
+	}
+}
