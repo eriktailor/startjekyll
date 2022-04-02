@@ -1,0 +1,60 @@
+I"H<h2 id="html">Html</h2>
+
+<p>Add a basic select field in the html:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"select-form"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;label&gt;</span>Select Technology<span class="nt">&lt;/label&gt;</span>
+	<span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select-box"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>Select....<span class="nt">&lt;/option&gt;</span>
+		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"css"</span><span class="nt">&gt;</span>CSS<span class="nt">&lt;/option&gt;</span>
+		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"html"</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/option&gt;</span>
+		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"worpdress"</span><span class="nt">&gt;</span>WordPress<span class="nt">&lt;/option&gt;</span>
+		<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"javascript"</span><span class="nt">&gt;</span>Javascript<span class="nt">&lt;/option&gt;</span>
+	<span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="css">Css</h2>
+
+<p>Add the following to your stylesheet:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.select-placeholder</span> <span class="p">{</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">option</span> <span class="p">{</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="javascript">Javascript</h2>
+
+<p>Add the following to your js file:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">select_placeholder</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.form-select</span><span class="dl">"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">select_val</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+		<span class="k">if</span> <span class="p">(</span><span class="nx">select_val</span> <span class="o">!=</span> <span class="dl">""</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">select-placeholder</span><span class="dl">"</span><span class="p">);</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">select-placeholder</span><span class="dl">"</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">change</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">.form-select</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+	<span class="nx">select_placeholder</span><span class="p">();</span>
+<span class="p">});</span>
+<span class="nx">select_placeholder</span><span class="p">();</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="source">Source</h3>
+
+<p><a href="https://www.thecodehubs.com/how-to-change-placeholder-color-on-select-field/">How to change placeholder color on select field</a></p>
+:ET

@@ -1,0 +1,108 @@
+I"40<h2 id="intro">Intro</h2>
+
+<p>This tutorial was based on <a href="https://spdevuk.com/how-to-create-code-copy-button/">SPDUK Steve’s great article</a> with a little twist that the copy button is hidden by default, and only reveals when the user hovers over the code block. The text of the button also changes to “Copied” when it is clicked.</p>
+
+<hr />
+
+<h2 id="html">Html</h2>
+
+<p>Create a basic code block:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;pre&gt;</span>
+<span class="nt">&lt;code&gt;</span>
+function(){
+    console.log('lala');
+}
+<span class="nt">&lt;/code&gt;</span>
+<span class="nt">&lt;/pre&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="javascript">Javascript</h2>
+
+<p>This code will create a copy button inside each <code class="language-plaintext highlighter-rouge">pre</code> elements, and makes it copy the contens to the clipboard, once the button is clicked. The code is well commented thanks to <a href="https://spdevuk.com/">Steve</a>, so you can see what’s happening through the process. Add the following code to your <code class="language-plaintext highlighter-rouge">script</code> file:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// get the list of all highlight code blocks</span>
+<span class="kd">const</span> <span class="nx">highlights</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">pre</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">highlights</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">pre</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="c1">// create the copy button</span>
+	<span class="kd">const</span> <span class="nx">copy</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">);</span>
+	<span class="nx">copy</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Copy</span><span class="dl">"</span><span class="p">;</span>
+	<span class="c1">// add the event listener to each click</span>
+	<span class="nx">copy</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">handleCopyClick</span><span class="p">);</span>
+	<span class="c1">// append the copy button to each code block</span>
+	<span class="nx">pre</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">copy</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">copyToClipboard</span> <span class="o">=</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">textarea</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// Create a &lt;textarea&gt; element</span>
+	<span class="nx">el</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">str</span><span class="p">;</span> <span class="c1">// Set its value to the string that you want copied</span>
+	<span class="nx">el</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">readonly</span><span class="dl">"</span><span class="p">,</span> <span class="dl">""</span><span class="p">);</span> <span class="c1">// Make it readonly to be tamper-proof</span>
+	<span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">absolute</span><span class="dl">"</span><span class="p">;</span>
+	<span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">-9999px</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// Move outside the screen to make it invisible</span>
+	<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span> <span class="c1">// Append the &lt;textarea&gt; element to the HTML document</span>
+	<span class="kd">const</span> <span class="nx">selected</span> <span class="o">=</span>
+		<span class="nb">document</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">rangeCount</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c1">// Check if there is any content selected previously</span>
+			<span class="p">?</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">getRangeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// Store selection if found</span>
+			<span class="p">:</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// Mark as false to know no selection existed before</span>
+	<span class="nx">el</span><span class="p">.</span><span class="nx">select</span><span class="p">();</span> <span class="c1">// Select the &lt;textarea&gt; content</span>
+	<span class="nb">document</span><span class="p">.</span><span class="nx">execCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">copy</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// Copy - only works as a result of a user action (e.g. click events)</span>
+	<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span> <span class="c1">// Remove the &lt;textarea&gt; element</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">selected</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// If a selection existed before copying</span>
+		<span class="nb">document</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">removeAllRanges</span><span class="p">();</span> <span class="c1">// Unselect everything on the HTML document</span>
+		<span class="nb">document</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">addRange</span><span class="p">(</span><span class="nx">selected</span><span class="p">);</span> <span class="c1">// Restore the original selection</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">handleCopyClick</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// get the children of the parent element</span>
+	<span class="kd">const</span> <span class="p">{</span> <span class="nx">children</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
+	<span class="c1">// grab the first element (we append the copy button on afterwards, so the first will be the code element)</span>
+	<span class="c1">// destructure the innerText from the code block</span>
+	<span class="kd">const</span> <span class="p">{</span> <span class="nx">innerText</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">children</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+	<span class="c1">// copy all of the code to the clipboard</span>
+	<span class="nx">copyToClipboard</span><span class="p">(</span><span class="nx">innerText</span><span class="p">);</span>
+	<span class="c1">// Change the button's text to "Copied"</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Copied</span><span class="dl">"</span><span class="p">;</span>
+	<span class="c1">// Change back the button text to "Copy" after 2 sec</span>
+	<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Copy</span><span class="dl">"</span><span class="p">;</span>
+	<span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="css">Css</h2>
+
+<p>The following code adds a little styling to the copy button and makes it invisible to reveal when the code block is hovered with the mouse. Add these styles to your <code class="language-plaintext highlighter-rouge">css</code> file:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">pre</span> <span class="nt">button</span> <span class="p">{</span>
+	<span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+	<span class="nl">right</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+	<span class="nl">top</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="m">#e7e7e7</span><span class="p">;</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="m">3px</span> <span class="m">6px</span><span class="p">;</span>
+	<span class="nl">border-radius</span><span class="p">:</span> <span class="m">3px</span><span class="p">;</span>
+	<span class="nl">font-size</span><span class="p">:</span> <span class="m">13px</span><span class="p">;</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="m">#666</span><span class="p">;</span>
+	<span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+	<span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">pre</span> <span class="nt">button</span><span class="nd">:hover</span> <span class="p">{</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="m">#d5dae2</span><span class="p">;</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+	<span class="nl">transition</span><span class="p">:</span> <span class="n">background-color</span> <span class="m">0.2s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">pre</span><span class="nd">:hover</span> <span class="nt">button</span> <span class="p">{</span>
+	<span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+	<span class="nl">transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">0.3s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

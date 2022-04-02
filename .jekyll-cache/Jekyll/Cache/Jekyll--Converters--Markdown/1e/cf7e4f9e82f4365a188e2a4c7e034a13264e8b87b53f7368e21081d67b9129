@@ -1,0 +1,37 @@
+I"s<h2 id="html">Html</h2>
+
+<p>This is the html structure of the menu:</p>
+
+<pre><code class="language-other">&lt;nav class="horizontal-menu"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;First Item&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Second Item&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Third Item&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Fourth Item&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Fifth Item&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Sixth Item&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Seventh Item&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Eight Item&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Nineth Item&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Tenth Item&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="css">Css</h2>
+
+<p>Add this to the stylesheet:</p>
+
+<pre><code class="language-other">.horizontal-menu {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.horizontal-menu li {
+    display: inline-block;
+    padding: 15px;
+}
+</code></pre>
+:ET
